@@ -23,6 +23,16 @@ public class BoardService {
         boardRepository.save(board);
     }
 
+    public BoardDto.Res read(long idx){
+        Board board = boardRepository.findById(idx)
+                .orElseThrow(() -> new IllegalArgumentException("해당 번호의 게시글이 없습니다."));
+        return BoardDto.Res.builder()
+                .idx(board.getIdx())
+                .title(board.getTitle())
+                .contents(board.getContents())
+                .build();
+    }
+
     public List<BoardDto.Read> list() {
         List<Board> boardList = boardRepository.findAll();
         List<BoardDto.Read> dtoList = new ArrayList<>();
