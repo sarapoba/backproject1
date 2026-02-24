@@ -5,10 +5,12 @@ import org.example.backproject1.board.model.BoardDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/board")
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5174")
 public class BoardController {
     private final BoardService boardService;
 
@@ -19,4 +21,11 @@ public class BoardController {
         return ResponseEntity.ok("게시글이 성공적으로 등록");
 
     }
+
+    @GetMapping("/list")
+    public ResponseEntity list() {
+    List<BoardDto.Read> dto = boardService.list();
+    return ResponseEntity.ok(dto);
+    }
+
 }
