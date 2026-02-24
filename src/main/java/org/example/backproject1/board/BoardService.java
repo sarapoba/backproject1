@@ -1,5 +1,6 @@
 package org.example.backproject1.board;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.backproject1.board.model.Board;
 import org.example.backproject1.board.model.BoardDto;
@@ -46,6 +47,14 @@ public class BoardService {
             dtoList.add(dto);
         }
         return dtoList;
+    }
+
+    @Transactional
+    public void update(long idx, BoardDto.Modify dto){
+        Board board = boardRepository.findById(idx)
+                .orElseThrow(() -> new IllegalArgumentException("해당 번호의 게시글이 없습니다."));
+
+        board.update(dto.getTitle(), dto.getContents());
     }
 }
 

@@ -34,4 +34,11 @@ public class BoardController {
     return ResponseEntity.ok(dto);
     }
 
+    @PutMapping("/update/{idx}")
+    public ResponseEntity update(@PathVariable long idx, @RequestBody BoardDto.Modify dto){
+        boardService.update(idx, dto);
+
+        return ResponseEntity.ok("게시글 수정이 완료되었습니다.");
+    }
+
 }
