@@ -20,4 +20,9 @@ public class Board {
     private String title; // 게시글 제목
 
     private String contents; // 게시글 내용
+
+    public void update(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
 }

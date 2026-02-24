@@ -35,4 +35,14 @@ public class BoardDto {
         private String title;
         private String contents;
     }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Modify {
+        private String title;
+        private String contents;
+    }
+
 }
