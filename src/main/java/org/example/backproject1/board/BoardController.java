@@ -41,4 +41,10 @@ public class BoardController {
         return ResponseEntity.ok("게시글 수정이 완료되었습니다.");
     }
 
+    @DeleteMapping("/delete/{idx}")
+    public ResponseEntity delete(@PathVariable long idx){
+        boardService.delete(idx);
+
+        return ResponseEntity.ok("게시글이 성공적으로 삭제되었습니다");
+    }
 }

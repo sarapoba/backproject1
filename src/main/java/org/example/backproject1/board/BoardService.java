@@ -56,5 +56,14 @@ public class BoardService {
 
         board.update(dto.getTitle(), dto.getContents());
     }
+
+
+    @Transactional
+    public void delete(long idx) {
+        Board board = boardRepository.findById(idx)
+                .orElseThrow(() -> new IllegalArgumentException("해당 번호의 게시글이 없습니다."));
+
+        boardRepository.delete(board);
+    }
 }
 
